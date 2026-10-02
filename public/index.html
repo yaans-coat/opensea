@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>OpenSea</title>
+		<link
+			rel="icon"
+			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%235ec8f8'/%3E%3Cstop offset='1' stop-color='%237c6cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230a1224'/%3E%3Cpath d='M6 26c7-7 11-7 18 0s11 7 18 0 11-7 16 0' fill='none' stroke='url(%23g)' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M6 42c7-7 11-7 18 0s11 7 18 0 11-7 16 0' fill='none' stroke='url(%23g)' stroke-width='5' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E"
+		/>
+		<link rel="stylesheet" href="/styles.css" />
+		<meta name="robots" content="noindex" />
+	</head>
+
+	<body>
+		<div class="aurora" aria-hidden="true">
+			<span class="aurora__blob aurora__blob--a"></span>
+			<span class="aurora__blob aurora__blob--b"></span>
+			<span class="aurora__blob aurora__blob--c"></span>
+		</div>
+
+		<header class="chrome">
+			<div class="tabstrip">
+				<div id="tabs" class="tabs" role="tablist" aria-label="Open tabs"></div>
+				<button
+					id="new-tab"
+					class="icon-btn tabstrip__add"
+					type="button"
+					aria-label="New tab"
+					title="New tab (Ctrl+T)"
+				>
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M12 5v14M5 12h14" />
+					</svg>
+				</button>
+			</div>
+
+			<div class="toolbar">
+				<div class="toolbar__group">
+					<button id="back" class="icon-btn" type="button" aria-label="Back" title="Back (Alt+←)">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M15 5l-7 7 7 7" />
+						</svg>
+					</button>
+					<button id="forward" class="icon-btn" type="button" aria-label="Forward" title="Forward (Alt+→)">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M9 5l7 7-7 7" />
+						</svg>
+					</button>
+					<button id="reload" class="icon-btn" type="button" aria-label="Reload" title="Reload (Ctrl+R)">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M20 11a8 8 0 1 0-.6 4M20 5v6h-6"
+							/>
+						</svg>
+					</button>
+					<button id="home" class="icon-btn" type="button" aria-label="Home" title="Home">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4 11.5 12 5l8 6.5M6.5 10v9h11v-9" />
+						</svg>
+					</button>
+				</div>
+
+				<div class="omnibox-wrap">
+					<form id="omnibox" class="omnibox" role="search">
+						<span class="omnibox__lead" aria-hidden="true">
+							<svg viewBox="0 0 24 24">
+								<circle cx="11" cy="11" r="6.5" />
+								<path d="m16 16 4.5 4.5" />
+							</svg>
+						</span>
+						<input
+							id="address"
+							type="text"
+							name="address"
+							placeholder="search the web or enter an address"
+							autocomplete="off"
+							autocapitalize="off"
+							spellcheck="false"
+							enterkeyhint="go"
+							aria-label="Address"
+							aria-autocomplete="list"
+							aria-controls="suggest"
+						/>
+						<button
+							id="bookmark"
+							class="icon-btn omnibox__star"
+							type="button"
+							aria-pressed="false"
+							aria-label="Bookmark this page"
+							title="Bookmark this page (Ctrl+D)"
+						>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.6-4.8 2.6.9-5.4L4.2 9.7l5.4-.8z"
+								/>
+							</svg>
+						</button>
+						<button class="omnibox__go" type="submit" aria-label="Go" title="Go">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M5 12h13M13 6.5 18.5 12 13 17.5" />
+							</svg>
+						</button>
+					</form>
+					<div id="suggest" class="suggest" role="listbox" aria-label="Suggestions" hidden></div>
+				</div>
+
+				<div class="toolbar__group">
+					<button
+						id="menu-toggle"
+						class="icon-btn"
+						type="button"
+						aria-expanded="false"
+						aria-haspopup="true"
+						aria-label="Menu"
+						title="Menu"
+					>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<circle cx="12" cy="5.5" r="1.6" />
+							<circle cx="12" cy="12" r="1.6" />
+							<circle cx="12" cy="18.5" r="1.6" />
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<div class="progress" aria-hidden="true"><span></span></div>
+
+			<nav id="menu" class="menu" role="menu" hidden>
+				<button data-open="opensea://home" type="button" role="menuitem">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M4 11.5 12 5l8 6.5M6.5 10v9h11v-9" />
+					</svg>
+					<span>New tab page</span>
+					<kbd>Ctrl+T</kbd>
+				</button>
+				<button data-open="opensea://settings" type="button" role="menuitem">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<circle cx="12" cy="12" r="3" />
+						<path
+							d="M12 3.5v2M12 18.5v2M4.9 7.8l1.7 1M17.4 15.2l1.7 1M4.9 16.2l1.7-1M17.4 8.8l1.7-1"
+						/>
+					</svg>
+					<span>Settings</span>
+				</button>
+				<button data-open="opensea://history" type="button" role="menuitem">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<circle cx="12" cy="12" r="8" />
+						<path d="M12 7.5V12l3 2" />
+					</svg>
+					<span>History</span>
+				</button>
+				<button data-open="opensea://bookmarks" type="button" role="menuitem">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.6-4.8 2.6.9-5.4L4.2 9.7l5.4-.8z"
+						/>
+					</svg>
+					<span>Bookmarks</span>
+				</button>
+				<button data-open="opensea://about" type="button" role="menuitem">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<circle cx="12" cy="12" r="8" />
+						<path d="M12 11v5M12 8.2v.1" />
+					</svg>
+					<span>About OpenSea</span>
+				</button>
+			</nav>
+		</header>
+
+		<p id="status" class="toast" role="status" hidden></p>
+
+		<main id="frames" class="frames"></main>
+
+		<canvas id="snow" class="snow" aria-hidden="true"></canvas>
+
+		<script type="module" src="/js/app.js"></script>
+	</body>
+</html>
