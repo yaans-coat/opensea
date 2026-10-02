@@ -13,6 +13,24 @@
 * Settings
 * Open any URL
 
+## Self-Hosting
+
+If you decide to self-host this project here's the steps how:
+
+```sh
+#clone the repo
+git clone https://github.com/yaans-coat/opensea
+
+#cd
+cd opensea
+
+#node commands
+npm install
+
+#simple server launching
+node server.js
+```
+
 ## LICENSE
 
 This project is protected by the [GNU Affero General Public License](LICENSE)
